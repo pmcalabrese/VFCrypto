@@ -8,6 +8,12 @@
     color: darkgreen;
 }
 
+.select-icon {
+    height: 16px;
+    width: 16px;
+    margin-right: 0.5rem;
+}
+
 .table td {
 
     vertical-align: middle;
@@ -15,6 +21,11 @@
     &.td-center {
         display: flex;
         align-items: center;
+
+        * {
+            display: flex;
+            align-items: center;        
+        }
     }
 }
 
@@ -24,4 +35,138 @@
 
 .currency-rank {
     margin-right: 1rem;
+}
+
+#detail_view {
+    background-color: #132d4d;
+    color: whitesmoke;
+
+    &__rank {
+        align-items: center;
+    }
+
+    .detail_view__label {
+        color: #516b8a;
+        font-size: 0.8rem;
+        font-weight: bold;
+        font-kerning: auto;
+    }
+
+    .detail__card {
+        padding: 1rem 0rem;
+
+        &__value {
+            color: whitesmoke;
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-kerning: auto;
+        }
+
+        &__symbol {
+            font-size: 0.8rem;
+            vertical-align: 0.1rem;
+            color: #00bb68
+        }
+    }
+
+}
+
+
+.is-vertical-center {
+    display: flex;
+    align-items: center;
+}
+
+.rank-circle {
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    background-color: #516b8a;
+    border-radius: 50%;
+    vertical-align: 0px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.4rem;
+    color: #82bceb;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+#nav-detail {
+    height: 80px;
+
+    .navbar-menu {
+        height: 100%;
+    }
+
+    .nav-detail_currency {
+
+
+        &__value {
+            padding: 1rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+
+        &__name-container {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            margin-left: 1rem;
+        
+            &__name {
+                display: inline-flex;
+                font-size: 1.1rem;
+                font-weight: bold;
+            }
+
+            &__symbol {
+                display: inline-flex;
+                font-size: 0.8rem;
+                font-weight: bold;
+                color: #55aaf8;
+                margin-top: -6px;
+            }
+        }
+
+        &__logo-container {
+
+            display: flex;
+            align-items: center;
+
+            &__logo {
+                display: flex;
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        &__navigate-container {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+        }
+    }
+
+    .back-button {
+        height: 25px;
+        width: 25px;
+        display: flex;
+        background: #e4f2fe;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color:#55aaf8;
+        font-weight: bold;
+
+        &:hover {
+            background: #e4f2fe;
+            color:#66aaf8;
+        }
+    }
+
 }

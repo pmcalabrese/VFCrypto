@@ -23,12 +23,12 @@ class NavbarDetail extends Component {
   }
 
   render() {
-    const { current_currency, currency_data } = this.props;
+    const { current_currency, currency_data, loading } = this.props;
 
     return (
       <nav id="nav-detail" role="navigation" aria-label="main navigation">
-        <div id="navbarBasicExample" className="navbar-menu">
-          {currency_data.symbol ? (
+        <div className="navbar-menu">
+          {(currency_data.symbol) ? (
             <div className="navbar-start">
               <span className="nav-detail_currency__navigate-container">
                 <Link className="back-button" to="/">
@@ -50,9 +50,8 @@ class NavbarDetail extends Component {
                   <small>{currency_data.symbol.toUpperCase()}</small>
                 </div>
               </span>
-              <span className="nav-detail_currency__value">
-                {" "}
-                {CURRENCY_SYMBOLS[current_currency] +
+              <span className={ (loading ? "animated-background" : "") + " nav-detail_currency__value"}>
+                {" " + CURRENCY_SYMBOLS[current_currency] +
                   " " +
                   formatMoney(currency_data.current_price)}
               </span>

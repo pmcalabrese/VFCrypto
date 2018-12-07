@@ -49,9 +49,7 @@ class DetailView extends Component {
 
     return (
       <React.Fragment>
-        <div>
-          <NavbarDetail currency_data={currency} />
-        </div>
+        <NavbarDetail currency_data={currency} loading={loading} />
         <div id="detail_view" className="section">
           <div className="columns">
             <div className="column is-vertical-center">
@@ -115,20 +113,18 @@ class DetailCard extends Component {
     return (
       <div title={`${title} of ${symbol}`} className="detail__card">
         <h2 className="detail_view__label">{title}</h2>
-        {!loading ? (
-          <div className="detail__card__value">
+          <div className={(loading ? "animated-background animated-background--blue" : "") + " detail__card__value"}>
             {value}{" "}
             {symbol ? (
               <b>
-                <small className="detail__card__symbol">{symbol.toUpperCase()}</small>
+                <small className="detail__card__symbol">
+                  {symbol.toUpperCase()}
+                </small>
               </b>
             ) : (
               ""
             )}
           </div>
-        ) : (
-          "loading"
-        )}
       </div>
     );
   }

@@ -1,0 +1,36 @@
+.negative-cap {
+    color: darkred;
+}
+
+.positive-cap {
+    color: darkgreen;
+}
+
+.select-icon {
+    height: 16px;
+    width: 16px;
+    margin-right: 0.5rem;
+}
+
+.table td {
+
+    vertical-align: middle;
+
+    &.td-center {
+        display: flex;
+        align-items: center;
+
+        * {
+            display: flex;
+            align-items: center;        
+        }
+    }
+}
+
+.currency-name {
+    margin-left: 1rem;
+}
+
+.currency-rank {
+    margin-right: 1rem;
+}

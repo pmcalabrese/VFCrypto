@@ -18,17 +18,18 @@ class Homeview extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState({
-      loading: true
-    });
     this.updateCurrencies(props.current_currency);
   }
 
-  updateCurrencies = currency_to_convert => {
+  updateCurrencies = (currency_to_convert, order = "") => {
+    this.setState({
+      loading: true
+    });
     return Coingecko.getCurrencies({
       vs_currency: currency_to_convert,
       per_page: 10,
-      page: 1
+      page: 1,
+      order
     }).then(currencies => {
       const now = new Date();
       this.setState({
@@ -50,15 +51,17 @@ class Homeview extends Component {
     clearInterval(this.interval);
   }
 
+  orderBy = order => {
+    this.updateCurrencies(this.props.current_currency, order);
+  };
+
   render() {
     const { currencies, last_update, loading } = this.state;
     const { current_currency } = this.props;
 
     return (
       <React.Fragment>
-        <div>
-          <Navbar />
-        </div>
+        <Navbar />
         <div className="section">
           <table className="table is-fullwidth">
             <thead>
@@ -70,62 +73,55 @@ class Homeview extends Component {
               </tr>
             </thead>
             <tbody>
-              {currencies.length !== 0
-                ? currencies.map(currency => (
-                    <tr key={currency.name}>
-                      <td className="td-center" title={currency.symbol}>
-                        <span className="currency-rank">{currency.rank}</span>
-                        <Link to={`currency/${currency.name.toLowerCase()}`}>
-                          <img
-                            alt={currency.name}
-                            src={ICONS[currency.symbol.toUpperCase()]}
-                          />
-                          <span className="currency-name">
-                            {" "}
-                            {currency.name}
-                          </span>
-                        </Link>
-                      </td>
-                      <td>
-                        {!loading ? (
-                          <span>
-                            <span>{CURRENCY_SYMBOLS[current_currency]}</span>
-                            <span>{formatMoney(currency.current_price)}</span>
-                          </span>
-                        ) : (
-                          "loading"
-                        )}
-                      </td>
-                      <td>
-                        {!loading ? (
-                          <small>
-                            <span>{CURRENCY_SYMBOLS[current_currency]}</span>
-                            {formatMoney(currency.market_cap)}
-                          </small>
-                        ) : (
-                          "loading"
-                        )}
-                      </td>
-                      <td
-                        className={
-                          currency.market_cap_change_percentage_24h < 0
-                            ? "negative-cap"
-                            : "positive-cap"
-                        }
-                      >
-                        {!loading ? (
-                          <b>
-                            <small>
-                              {currency.market_cap_change_percentage_24h} %
-                            </small>
-                          </b>
-                        ) : (
-                          "loading"
-                        )}
-                      </td>
-                    </tr>
-                  ))
-                : "loading"}
+              {currencies.length !== 0 ? (
+                currencies.map(currency => (
+                  <tr key={currency.name}>
+                    <td className="td-center" title={currency.symbol}>
+                      <span className="currency-rank">{currency.rank}</span>
+                      <Link to={`currency/${currency.name.toLowerCase()}`}>
+                        <img
+                          alt={currency.name}
+                          src={ICONS[currency.symbol.toUpperCase()]}
+                        />
+                        <span className="currency-name"> {currency.name}</span>
+                      </Link>
+                    </td>
+                    <td>
+                      {
+                        <div className={loading ? "animated-background" : ""}>
+                          <span>{CURRENCY_SYMBOLS[current_currency]}</span>
+                          <span>{formatMoney(currency.current_price)}</span>
+                        </div>
+                      }
+                    </td>
+                    <td>
+                      <small className={loading ? "animated-background" : ""}>
+                        <span>{CURRENCY_SYMBOLS[current_currency]}</span>
+                        {formatMoney(currency.market_cap)}
+                      </small>
+                    </td>
+                    <td
+                      className={
+                        currency.market_cap_change_percentage_24h < 0
+                          ? "negative-cap"
+                          : "positive-cap"
+                      }
+                    >
+                      <b>
+                        <small className={loading ? "animated-background" : ""}>
+                          {currency.market_cap_change_percentage_24h} %
+                        </small>
+                      </b>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colspan="4" className="circle-container">
+                    <span class="circle" />
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
           <span>

@@ -1,14 +1,14 @@
 # VFCrypto
 
-App for visualize cryptocurrencies written in React and Redux.
+App for visualize cryptocurrencies written in React and Redux. It uses Coingecko v3 API [https://www.coingecko.com/api/docs/v3](https://www.coingecko.com/api/docs/v3).
 
-you can see it live at [vfc.now.sh](vfc.now.sh)
+You can see it live at [vfc.now.sh](vfc.now.sh)
 
-or **deployment** (you need to have [now](https://zeit.co/now) installed) you can run:
+or if you install [now](https://zeit.co/now) you can deploy it by running:
 
     yarn deploy
 
-and after for aliasing
+and after for aliasing to vfc subdomain:
 
     now alias <temp url> vfc
 

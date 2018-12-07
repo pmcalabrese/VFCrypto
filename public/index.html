@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -20,11 +23,65 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>VFCrypto</title>
+    <style>
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      table td.circle-container {
+        text-align: center;
+        padding: 5rem;
+      }
+      .circle {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        border: 6px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #444;
+        animation: spin 1s infinite linear;
+      }
+      @keyframes placeHolderShimmer {
+        0% {
+          background-position: 0px 0;
+        }
+        100% {
+          background-position: 468px 0;
+        }
+      }
+      .animated-background {
+        border-radius: 5px;
+        color: transparent!important;
+        height: 100%;
+        animation-duration: 1.25s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: placeHolderShimmer;
+        animation-timing-function: linear;
+        background: #f6f6f6;
+        background: linear-gradient(
+          to right,
+          #f6f6f6 8%,
+          #f0f0f0 18%,
+          #f6f6f6 33%
+        );
+        background-size: 800px 104px;
+      }
+      .animated-background--blue {
+        background: #0e2642;
+        background: linear-gradient(
+          to right,
+          #0e2642 8%,
+          #0e223a 18%,
+          #0e2642 33%
+        );
+      }
+    </style>
   </head>
   <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
     <div id="root"></div>
     <!--
       This HTML file is a template.

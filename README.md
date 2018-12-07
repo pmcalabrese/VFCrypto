@@ -1,3 +1,19 @@
+# VFCrypto
+
+App for visualize cryptocurrencies written in React and Redux.
+
+you can see it live at [vfc.now.sh](vfc.now.sh)
+
+or **deployment** (you need to have [now](https://zeit.co/now) installed) you can run:
+
+    yarn deploy
+
+and after for aliasing
+
+    now alias <temp url> vfc
+
+___
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
